@@ -1,0 +1,71 @@
+package br.ufc.quixada.reserva.app;
+
+import br.ufc.quixada.reserva.model.*;
+import br.ufc.quixada.reserva.stream.EspacoFisicoOutputStream;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class SistemaReservaMain {
+    public static void main(String[] args) {
+        try {
+            // 1. Instanciando os dados
+            EspacoFisico[] espacos = new EspacoFisico[3];
+            espacos[0] = new Sala(1, "Sala Bloco 1", 40, true);
+            espacos[1] = new Laboratorio(2, "Lab de Redes - Bloco 2", 30, 30);
+            espacos[2] = new Auditorio(3, "Auditorio Principal Quixadá", 150, true);
+
+            // Teste (i): Saída Padrão (Console)
+            System.out.println("--- Teste (i): Saída Padrão (System.out) ---");
+            EspacoFisicoOutputStream streamConsole = new EspacoFisicoOutputStream(espacos, 3, System.out);
+            streamConsole.transmitirDados();
+            System.out.println("\n[Dados enviados para console com sucesso]\n");
+
+            // Teste (ii): Arquivo
+            System.out.println("--- Teste (ii): Arquivo (FileOutputStream) ---");
+            File arquivoSaida = new File("dados_espacos.dat");
+            try (FileOutputStream fos = new FileOutputStream(arquivoSaida)) {
+                EspacoFisicoOutputStream streamArquivo = new EspacoFisicoOutputStream(espacos, 3, fos);
+                streamArquivo.transmitirDados();
+                System.out.println("[Dados salvos no arquivo: " + arquivoSaida.getAbsolutePath() + "]\n");
+            }
+
+            // Teste (iii): Servidor Remoto (TCP)
+            System.out.println("--- Teste (iii): Servidor Remoto (TCP) ---");
+            Thread servidorThread = new Thread(() -> {
+                try (ServerSocket server = new ServerSocket(9090);
+                     Socket client = server.accept();
+                     InputStream in = client.getInputStream()) {
+                    
+                    byte[] buffer = new byte[1024];
+                    int bytesLidos;
+                    int totalBytes = 0;
+                    while ((bytesLidos = in.read(buffer)) != -1) {
+                    totalBytes += bytesLidos; }
+                    System.out.println("[Servidor] Recebeu um total de " + totalBytes + " bytes via Socket.");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+            servidorThread.start();
+
+            Thread.sleep(500); // Aguarda o servidor iniciar
+
+            try (Socket socket = new Socket("localhost", 9090)) {
+                OutputStream socketOut = socket.getOutputStream();
+                EspacoFisicoOutputStream streamTcp = new EspacoFisicoOutputStream(espacos, 3, socketOut);
+                streamTcp.transmitirDados();
+                System.out.println("[Cliente] Dados transmitidos via TCP.");
+            }
+
+            servidorThread.join();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
