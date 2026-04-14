@@ -13,19 +13,17 @@ import java.net.Socket;
 public class SistemaReservaMain {
     public static void main(String[] args) {
         try {
-            // 1. Instanciando os dados
+
             EspacoFisico[] espacos = new EspacoFisico[3];
             espacos[0] = new Sala(1, "Sala Bloco 1", 40, true);
             espacos[1] = new Laboratorio(2, "Lab de Redes - Bloco 2", 30, 30);
             espacos[2] = new Auditorio(3, "Auditorio Principal Quixadá", 150, true);
 
-            // Teste (i): Saída Padrão (Console)
             System.out.println("--- Teste (i): Saída Padrão (System.out) ---");
             EspacoFisicoOutputStream streamConsole = new EspacoFisicoOutputStream(espacos, 3, System.out);
             streamConsole.transmitirDados();
             System.out.println("\n[Dados enviados para console com sucesso]\n");
 
-            // Teste (ii): Arquivo
             System.out.println("--- Teste (ii): Arquivo (FileOutputStream) ---");
             File arquivoSaida = new File("dados_espacos.dat");
             try (FileOutputStream fos = new FileOutputStream(arquivoSaida)) {
@@ -34,7 +32,6 @@ public class SistemaReservaMain {
                 System.out.println("[Dados salvos no arquivo: " + arquivoSaida.getAbsolutePath() + "]\n");
             }
 
-            // Teste (iii): Servidor Remoto (TCP)
             System.out.println("--- Teste (iii): Servidor Remoto (TCP) ---");
             Thread servidorThread = new Thread(() -> {
                 try (ServerSocket server = new ServerSocket(9090);
@@ -53,7 +50,7 @@ public class SistemaReservaMain {
             });
             servidorThread.start();
 
-            Thread.sleep(500); // Aguarda o servidor iniciar
+            Thread.sleep(500); 
 
             try (Socket socket = new Socket("localhost", 9090)) {
                 OutputStream socketOut = socket.getOutputStream();
