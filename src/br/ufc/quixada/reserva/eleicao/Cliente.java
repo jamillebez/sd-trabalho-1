@@ -54,7 +54,7 @@ public class Cliente {
                 }
                 if ("e".equals(opcao)) {
                     enviar(out2, "{\"tipo\":\"comandoEmitirNota\"}");
-                    System.out.println("Emitindo nota...");
+                    System.out.println("Resposta emitir nota: " + receber(in2));
                 }
                 votoSocket.close();
             }

@@ -43,8 +43,12 @@ public class Servidor {
                 resultado += "\n" + entry.getValue() + ": " + votos.get(entry.getKey()) + " votos";
             }
             resultado += "\n Porcentagem: ";
+            int totalVotos = 0;
+            for (Integer voto : votos.values()) {
+                totalVotos += voto;
+            }
             for (Map.Entry<Integer, String> entry : candidatos.entrySet()) {
-                resultado += "\n" + entry.getValue() + ": " + (votos.get(entry.getKey()) * 100 / (votos.get(1) + votos.get(2) + votos.get(3))) + "%";
+                resultado += "\n" + entry.getValue() + ": " + (totalVotos > 0 ? (votos.get(entry.getKey()) * 100 / totalVotos) : 0) + "%";
             }
             String vencedor = candidatos.get(
                 Collections.max(votos.entrySet(), Map.Entry.comparingByValue()).getKey()
@@ -104,7 +108,12 @@ public class Servidor {
             }
 
             if (msg.contains("comandoEmitirNota")) {
-                executarMulticast();
+                if (System.currentTimeMillis() < fimVotacao) {
+                    enviar(out, "{\"tipo\":\"erro\",\"msg\":\"Tempo não encerrado\"}");
+                } else {
+                    enviar(out, "{\"tipo\":\"ok\",\"msg\":\"Emitindo nota...\"}");
+                    executarMulticast();
+                }
             }
 
             cliente.close();
