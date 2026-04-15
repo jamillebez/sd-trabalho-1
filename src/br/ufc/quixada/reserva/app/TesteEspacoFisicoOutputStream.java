@@ -5,9 +5,7 @@ import br.ufc.quixada.reserva.stream.EspacoFisicoOutputStream;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.ServerSocket;
 import java.net.Socket;
 
 public class TesteEspacoFisicoOutputStream {
