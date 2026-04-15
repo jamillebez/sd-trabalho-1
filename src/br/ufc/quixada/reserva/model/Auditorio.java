@@ -7,4 +7,6 @@ public class Auditorio extends EspacoFisico {
         super(id, nome, capacidade);
         this.possuiSistemaSom = possuiSistemaSom;
     }
+
+    public boolean getPossuiSistemaSom() { return possuiSistemaSom; }
 }

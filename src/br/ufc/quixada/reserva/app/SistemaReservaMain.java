@@ -12,6 +12,7 @@ import java.net.Socket;
 
 public class SistemaReservaMain {
     public static void main(String[] args) {
+        // Testes para o item (i), (ii) e (iii) do exercício 2 - OutputStream
         try {
 
             EspacoFisico[] espacos = new EspacoFisico[3];

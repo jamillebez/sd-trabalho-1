@@ -7,4 +7,6 @@ public class Laboratorio extends EspacoFisico {
         super(id, nome, capacidade);
         this.quantidadeComputadores = quantidadeComputadores;
     }
+
+    public int getQuantidadeComputadores() { return quantidadeComputadores; }
 }

@@ -15,4 +15,7 @@ public class Campus {
     public void adicionarEspaco(EspacoFisico espaco) {
         espacos.add(espaco);
     }
+
+    public String getNomeCampus() { return nomeCampus; }
+    public List<EspacoFisico> getEspacos() { return espacos; }
 }

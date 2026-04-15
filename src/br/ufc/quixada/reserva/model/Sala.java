@@ -7,4 +7,7 @@ public class Sala extends EspacoFisico {
         super(id, nome, capacidade);
         this.possuiProjetor = possuiProjetor;
     }
+
+
+    public boolean getPossuiProjetor() { return possuiProjetor; }
 }
