@@ -46,25 +46,15 @@ public class TesteEspacoFisicoInputStream {
 
         System.out.println();
         System.out.println("--- Teste (iii) com TCP ---");
-        Thread servidor = new Thread(() -> {
-            try (ServerSocket server = new ServerSocket(12345);
-                 Socket cliente = server.accept()) {
-                EspacoFisico[] lidosTcp = new EspacoFisicoInputStream(cliente.getInputStream()).ler();
-                for (EspacoFisico espaco : lidosTcp) {
-                    System.out.println(espaco.getId() + " - " + espaco.getNome() + " - " + espaco.getCapacidade());
+        try (ServerSocket server = new ServerSocket(9090)) {
+            while (true) {
+                try (Socket cliente = server.accept()) {
+                    EspacoFisico[] lidosTcp = new EspacoFisicoInputStream(cliente.getInputStream()).ler();
+                    for (EspacoFisico espaco : lidosTcp) {
+                        System.out.println(espaco.getId() + " - " + espaco.getNome() + " - " + espaco.getCapacidade());
+                    }
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
             }
-        });
-
-        servidor.start();
-        Thread.sleep(300);
-
-        try (Socket socket = new Socket("localhost", 12345)) {
-            new EspacoFisicoOutputStream(espacos, espacos.length, socket.getOutputStream()).transmitirDados();
         }
-
-        servidor.join();
     }
 }

@@ -10,7 +10,7 @@ import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class SistemaReservaMain {
+public class TesteEspacoFisicoOutputStream {
     public static void main(String[] args) {
         // Testes para o item (i), (ii) e (iii) do exercício 2 - OutputStream
         try {
@@ -34,33 +34,16 @@ public class SistemaReservaMain {
             }
 
             System.out.println("--- Teste (iii): Servidor Remoto (TCP) ---");
-            Thread servidorThread = new Thread(() -> {
-                try (ServerSocket server = new ServerSocket(9090);
-                     Socket client = server.accept();
-                     InputStream in = client.getInputStream()) {
-                    
-                    byte[] buffer = new byte[1024];
-                    int bytesLidos;
-                    int totalBytes = 0;
-                    while ((bytesLidos = in.read(buffer)) != -1) {
-                    totalBytes += bytesLidos; }
-                    System.out.println("[Servidor] Recebeu um total de " + totalBytes + " bytes via Socket.");
-                } catch (Exception e) {
-                    e.printStackTrace();
+            while (true) {
+                try (Socket socket = new Socket("localhost", 9090)) {
+                    OutputStream socketOut = socket.getOutputStream();
+                    EspacoFisicoOutputStream streamTcp = new EspacoFisicoOutputStream(espacos, 3, socketOut);
+                    streamTcp.transmitirDados();
+                    System.out.println("[Cliente] Dados transmitidos via TCP.");
                 }
-            });
-            servidorThread.start();
 
-            Thread.sleep(500); 
-
-            try (Socket socket = new Socket("localhost", 9090)) {
-                OutputStream socketOut = socket.getOutputStream();
-                EspacoFisicoOutputStream streamTcp = new EspacoFisicoOutputStream(espacos, 3, socketOut);
-                streamTcp.transmitirDados();
-                System.out.println("[Cliente] Dados transmitidos via TCP.");
+                Thread.sleep(1000);
             }
-
-            servidorThread.join();
 
         } catch (Exception e) {
             e.printStackTrace();
