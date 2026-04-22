@@ -15,6 +15,10 @@ public class ClienteEspacoFisico {
 
         EspacoFisico espaco = new Sala(1, "Sala ufc", 50, true);
 
+        System.out.println("Enviando dados do espaço físico...");
+        System.out.println("Nome: " + espaco.getNome());
+        System.out.println("Capacidade: " + espaco.getCapacidade());
+
         byte[] nomeBytes = espaco.getNome().getBytes();
 
         out.write(nomeBytes.length);

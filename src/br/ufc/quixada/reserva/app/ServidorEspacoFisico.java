@@ -18,6 +18,8 @@ public class ServidorEspacoFisico {
                 InputStream in = cliente.getInputStream();
                 OutputStream out = cliente.getOutputStream();
 
+                System.out.println("Receber dados do cliente...");
+
                 int tamanhoNome = in.read();
                 byte[] nomeBytes = new byte[tamanhoNome];
 

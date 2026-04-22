@@ -47,6 +47,7 @@ public class TesteEspacoFisicoInputStream {
         System.out.println();
         System.out.println("--- Teste (iii) com TCP ---");
         try (ServerSocket server = new ServerSocket(9090)) {
+            System.out.println("Servidor TCP aguardando conexões na porta 9090...");
             while (true) {
                 try (Socket cliente = server.accept()) {
                     EspacoFisico[] lidosTcp = new EspacoFisicoInputStream(cliente.getInputStream()).ler();
