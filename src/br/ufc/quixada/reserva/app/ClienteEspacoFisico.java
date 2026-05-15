@@ -1,44 +1,38 @@
 package br.ufc.quixada.reserva.app;
 
-import java.io.*;
-import java.net.*;
 import br.ufc.quixada.reserva.model.*;
+import br.ufc.quixada.reserva.rmi.MiddlewareRMI;
+import com.google.gson.Gson;
 
 public class ClienteEspacoFisico {
+    public static void main(String[] args) {
+        try {
+            MiddlewareRMI middleware = new MiddlewareRMI();
+            Gson gson = new Gson();
 
-    public static void main(String[] args) throws Exception {
+            EspacoFisico espaco = new Sala(1, "Sala UFC Quixadá", 50, true);
+            
+            String argumentosJSON = gson.toJson(espaco);
+            
+            System.out.println("Invocando método remotamente via RMI...");
+            
+            byte[] respostaBytes = middleware.doOperation(
+                "ServicoReserva",        
+                "solicitarReserva",     
+                argumentosJSON.getBytes(), 
+                "localhost",            
+                12345                    
+            );
 
-        Socket socket = new Socket("localhost", 12345);
+            if (respostaBytes != null) {
+                String resposta = new String(respostaBytes).trim();
+                System.out.println("Resposta do Servidor RMI: " + resposta);
+            } else {
+                System.out.println("Erro: Nenhuma resposta do servidor.");
+            }
 
-        OutputStream out = socket.getOutputStream();
-        InputStream in = socket.getInputStream();
-
-        EspacoFisico espaco = new Sala(1, "Sala ufc", 50, true);
-
-        System.out.println("Enviando dados do espaço físico...");
-        System.out.println("Nome: " + espaco.getNome());
-        System.out.println("Capacidade: " + espaco.getCapacidade());
-
-        byte[] nomeBytes = espaco.getNome().getBytes();
-
-        out.write(nomeBytes.length);
-        out.write(nomeBytes);
-        out.write(espaco.getCapacidade());
-
-        out.flush();
-
-        int tamanho = in.read();
-        byte[] buffer = new byte[tamanho];
-
-        int total = 0;
-        while (total < tamanho) {
-            int lido = in.read(buffer, total, tamanho - total);
-            total += lido;
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        String resposta = new String(buffer);
-        System.out.println("Resposta: " + resposta);
-
-        socket.close();
     }
 }

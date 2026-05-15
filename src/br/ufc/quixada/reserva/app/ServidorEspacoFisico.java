@@ -1,52 +1,37 @@
 package br.ufc.quixada.reserva.app;
 
-import java.io.*;
-import java.net.*;
+import br.ufc.quixada.reserva.rmi.MensagemRPC;
+import br.ufc.quixada.reserva.rmi.MiddlewareRMI;
+import java.net.DatagramPacket;
 
 public class ServidorEspacoFisico {
+    public static void main(String[] args) {
+        try {
+            MiddlewareRMI middleware = new MiddlewareRMI(12345);
+            System.out.println("Servidor RMI funcionando na porta 12345...");
 
-    // Servidor do exercicio 4
-    public static void main(String[] args) throws Exception {
+            while (true) {
+                System.out.println("Aguardando requisições...");
+                
+                DatagramPacket pacoteRecebido = middleware.getRequest();
+                MensagemRPC msgRequisicao = MensagemRPC.fromBytes(pacoteRecebido.getData());
 
-        ServerSocket server = new ServerSocket(12345);
-        System.out.println("Servidor funcionando...");
-
-        while (true) {
-            Socket cliente = server.accept();
-
-            try {
-                InputStream in = cliente.getInputStream();
-                OutputStream out = cliente.getOutputStream();
-
-                System.out.println("Receber dados do cliente...");
-
-                int tamanhoNome = in.read();
-                byte[] nomeBytes = new byte[tamanhoNome];
-
-                int total = 0;
-                while (total < tamanhoNome) {
-                    int lido = in.read(nomeBytes, total, tamanhoNome - total);
-                    total += lido;
+                System.out.println("Método invocado: " + msgRequisicao.methodId);
+                
+                String resposta;
+                
+                if (msgRequisicao.methodId.equals("solicitarReserva")) {
+                    System.out.println("Argumentos recebidos: " + msgRequisicao.arguments);
+                    resposta = "Reserva confirmada com sucesso no servidor!";
+                } else {
+                    resposta = "Método não encontrado.";
                 }
 
-                String nome = new String(nomeBytes);
-
-                int capacidade = in.read();
-
-                System.out.println("Reservado: " + nome + " - Capacidade: " + capacidade);
-
-                String resposta = "Reserva concluída para " + nome;
-
-                byte[] respBytes = resposta.getBytes();
-                out.write(respBytes.length);
-                out.write(respBytes);
-                out.flush();
-
-                cliente.close();
-
-            } catch (Exception e) {
-                e.printStackTrace();
+                middleware.sendReply(resposta.getBytes(), pacoteRecebido.getAddress(), pacoteRecebido.getPort());
             }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
