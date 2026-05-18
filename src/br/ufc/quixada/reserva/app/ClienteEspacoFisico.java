@@ -36,13 +36,17 @@ public class ClienteEspacoFisico {
 
     private static void invocarMetodo(String objectRef, String methodId, String argumentos) {
         System.out.println(">> Invocando remotamente: " + methodId);
-        byte[] respostaBytes = middleware.doOperation(objectRef, methodId, argumentos.getBytes(), ipServidor, portaServidor);
+        try {
+            byte[] respostaBytes = middleware.doOperation(objectRef, methodId, argumentos.getBytes(), ipServidor, portaServidor);
 
-        if (respostaBytes != null) {
-            String resposta = new String(respostaBytes).trim();
-            System.out.println("   Resposta do Servidor: " + resposta + "\n");
-        } else {
-            System.out.println("   Erro: Nenhuma resposta.\n");
+            if (respostaBytes != null) {
+                String resposta = new String(respostaBytes).trim();
+                System.out.println("   Resposta do Servidor: " + resposta + "\n");
+            } else {
+                System.out.println("   Erro: Nenhuma resposta.\n");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

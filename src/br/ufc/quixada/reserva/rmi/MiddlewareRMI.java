@@ -2,32 +2,47 @@ package br.ufc.quixada.reserva.rmi;
 
 import java.net.InetAddress;
 import java.rmi.Naming;
+import java.rmi.RemoteException;
 
 import br.ufc.quixada.reserva.service.ServicoConsultaRemote;
 import br.ufc.quixada.reserva.service.ServicoReservaRemote;
 
-public class MiddlewareRMI {
+public class MiddlewareRMI implements MiddlewareRemoto {
     private MensagemRPC ultimaRequisicao;
     private byte[] ultimaResposta;
+    private final boolean proxyCliente;
 
     public MiddlewareRMI(int porta) {
+        this.proxyCliente = true;
     }
 
     public MiddlewareRMI() {
+        this.proxyCliente = true;
     }
 
-    public byte[] doOperation(String objectRef, String methodId, byte[] arguments, String ipServidor, int portaServidor) {
-        try {
-            ultimaRequisicao = new MensagemRPC(0, 1, objectRef, methodId, new String(arguments));
-            MensagemRPC request = MensagemRPC.fromBytes(getRequest());
+    public MiddlewareRMI(boolean proxyCliente) {
+        this.proxyCliente = proxyCliente;
+    }
 
-            String resposta = invocarServico(request, ipServidor, portaServidor);
+    @Override
+    public byte[] doOperation(String objectRef, String methodId, byte[] arguments, String ipServidor, int portaServidor) throws RemoteException {
+        try {
+            if (proxyCliente) {
+                MiddlewareRemoto middlewareRemoto = (MiddlewareRemoto) Naming.lookup("rmi://" + ipServidor + ":" + portaServidor + "/MiddlewareRMI");
+                return middlewareRemoto.doOperation(objectRef, methodId, arguments, ipServidor, portaServidor);
+            }
+
+            System.out.println("[Servidor] Requisição recebida: objeto=" + objectRef + ", método=" + methodId + ", argumentos=" + new String(arguments));
+            MensagemRPC request = new MensagemRPC(0, 1, objectRef, methodId, new String(arguments));
+            ultimaRequisicao = request;
+            MensagemRPC recebido = MensagemRPC.fromBytes(getRequest());
+
+            String resposta = invocarServico(recebido, ipServidor, portaServidor);
             sendReply(resposta.getBytes(), InetAddress.getLoopbackAddress(), portaServidor);
-            return ultimaResposta == null ? null : MensagemRPC.fromBytes(ultimaResposta).arguments.getBytes();
+            return MensagemRPC.fromBytes(ultimaResposta).arguments.getBytes();
 
         } catch (Exception e) {
-            e.printStackTrace();
-            return null;
+            throw new RemoteException("Erro ao executar operação remota", e);
         }
     }
 
