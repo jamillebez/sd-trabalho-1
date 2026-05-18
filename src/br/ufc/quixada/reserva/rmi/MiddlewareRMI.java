@@ -1,35 +1,29 @@
 package br.ufc.quixada.reserva.rmi;
 
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.rmi.Naming;
+
+import br.ufc.quixada.reserva.service.ServicoConsultaRemote;
+import br.ufc.quixada.reserva.service.ServicoReservaRemote;
 
 public class MiddlewareRMI {
-    private DatagramSocket socket;
+    private MensagemRPC ultimaRequisicao;
+    private byte[] ultimaResposta;
 
-    public MiddlewareRMI(int porta) throws Exception {
-        this.socket = new DatagramSocket(porta);
+    public MiddlewareRMI(int porta) {
     }
 
-    public MiddlewareRMI() throws Exception {
-        this.socket = new DatagramSocket();
+    public MiddlewareRMI() {
     }
 
     public byte[] doOperation(String objectRef, String methodId, byte[] arguments, String ipServidor, int portaServidor) {
         try {
-            MensagemRPC request = new MensagemRPC(0, 1, objectRef, methodId, new String(arguments));
-            byte[] dadosRequisicao = request.toBytes();
+            ultimaRequisicao = new MensagemRPC(0, 1, objectRef, methodId, new String(arguments));
+            MensagemRPC request = MensagemRPC.fromBytes(getRequest());
 
-            InetAddress endereco = InetAddress.getByName(ipServidor);
-            DatagramPacket pacoteEnvio = new DatagramPacket(dadosRequisicao, dadosRequisicao.length, endereco, portaServidor);
-            socket.send(pacoteEnvio);
-
-            byte[] buffer = new byte[4096];
-            DatagramPacket pacoteRecebido = new DatagramPacket(buffer, buffer.length);
-            socket.receive(pacoteRecebido);
-
-            MensagemRPC reply = MensagemRPC.fromBytes(pacoteRecebido.getData());
-            return reply.arguments.getBytes(); 
+            String resposta = invocarServico(request, ipServidor, portaServidor);
+            sendReply(resposta.getBytes(), InetAddress.getLoopbackAddress(), portaServidor);
+            return ultimaResposta == null ? null : MensagemRPC.fromBytes(ultimaResposta).arguments.getBytes();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -37,22 +31,38 @@ public class MiddlewareRMI {
         }
     }
 
-    public DatagramPacket getRequest() throws Exception {
-        byte[] buffer = new byte[4096];
-        DatagramPacket pacoteRecebido = new DatagramPacket(buffer, buffer.length);
-        socket.receive(pacoteRecebido); 
-        return pacoteRecebido;
+    public byte[] getRequest() {
+        return ultimaRequisicao == null ? new byte[0] : ultimaRequisicao.toBytes();
     }
 
     public void sendReply(byte[] replyArgs, InetAddress clientHost, int clientPort) {
-        try {
-            MensagemRPC replyMsg = new MensagemRPC(1, 1, "Servidor", "resposta", new String(replyArgs));
-            byte[] dadosResposta = replyMsg.toBytes();
+        MensagemRPC replyMsg = new MensagemRPC(1, 1, "Servidor", "resposta", new String(replyArgs));
+        ultimaResposta = replyMsg.toBytes();
+    }
 
-            DatagramPacket pacoteEnvio = new DatagramPacket(dadosResposta, dadosResposta.length, clientHost, clientPort);
-            socket.send(pacoteEnvio);
-        } catch (Exception e) {
-            e.printStackTrace();
+    private String invocarServico(MensagemRPC request, String ipServidor, int portaServidor) throws Exception {
+        String endereco = "rmi://" + ipServidor + ":" + portaServidor + "/" + request.objectReference;
+
+        if ("ServicoReserva".equals(request.objectReference)) {
+            ServicoReservaRemote servico = (ServicoReservaRemote) Naming.lookup(endereco);
+            if ("solicitarReserva".equals(request.methodId)) {
+                return servico.solicitarReserva(request.arguments);
+            }
+            if ("cancelarReserva".equals(request.methodId)) {
+                return servico.cancelarReserva(request.arguments);
+            }
         }
+
+        if ("ServicoConsulta".equals(request.objectReference)) {
+            ServicoConsultaRemote servico = (ServicoConsultaRemote) Naming.lookup(endereco);
+            if ("verificarDisponibilidade".equals(request.methodId)) {
+                return servico.verificarDisponibilidade();
+            }
+            if ("consultarDetalhes".equals(request.methodId)) {
+                return servico.consultarDetalhes(request.arguments);
+            }
+        }
+
+        return "Erro: operação remota não suportada.";
     }
 }

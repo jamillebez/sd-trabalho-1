@@ -1,22 +1,18 @@
 package br.ufc.quixada.reserva.service;
 
-import br.ufc.quixada.reserva.model.EspacoFisico;
+import java.rmi.server.UnicastRemoteObject;
+import java.rmi.RemoteException;
 
-public class ServicoReservaImpl implements Reserva {
-    private EspacoFisico espaco;
-    
-    public ServicoReservaImpl(EspacoFisico espaco) {
-        this.espaco = espaco;
+public class ServicoReservaImpl extends UnicastRemoteObject implements ServicoReservaRemote {
+    public ServicoReservaImpl() throws RemoteException { super(); }
+
+    @Override
+    public String solicitarReserva(String argumentos) throws RemoteException {
+        return "Sucesso: Reserva confirmada!";
     }
 
     @Override
-    public boolean solicitarReserva(String data, String horario) {
-        System.out.println("Reserva confirmada para " + espaco.getNome() + " em " + data + " às " + horario);
-        return true;
-    }
-
-    @Override
-    public void cancelarReserva() {
-        System.out.println("Reserva cancelada para " + espaco.getNome());
+    public String cancelarReserva(String argumentos) throws RemoteException {
+        return "Sucesso: Reserva cancelada!";
     }
 }

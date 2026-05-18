@@ -1,9 +1,18 @@
 package br.ufc.quixada.reserva.service;
 
-import br.ufc.quixada.reserva.model.EspacoFisico;
+import java.rmi.server.UnicastRemoteObject;
+import java.rmi.RemoteException;
 
-public class ServicoConsultaImpl implements Consulta {
-    public boolean verificarDisponibilidade(EspacoFisico espaco, String data) {
-        return true;
+public class ServicoConsultaImpl extends UnicastRemoteObject implements ServicoConsultaRemote {
+    public ServicoConsultaImpl() throws RemoteException { super(); }
+
+    @Override
+    public String verificarDisponibilidade() throws RemoteException {
+        return "O espaço está disponível para a data solicitada.";
+    }
+
+    @Override
+    public String consultarDetalhes(String detalhes) throws RemoteException {
+        return "Detalhes: " + detalhes;
     }
 }

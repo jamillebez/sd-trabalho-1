@@ -2,21 +2,22 @@ package br.ufc.quixada.reserva.app;
 
 import br.ufc.quixada.reserva.model.*;
 import br.ufc.quixada.reserva.rmi.MiddlewareRMI;
-import com.google.gson.Gson;
 
 public class ClienteEspacoFisico {
     
     private static MiddlewareRMI middleware;
     private static String ipServidor = "localhost";
-    private static int portaServidor = 12345;
+    private static int portaServidor = 1099;
 
     public static void main(String[] args) {
         try {
             middleware = new MiddlewareRMI(); 
-            Gson gson = new Gson();
 
             EspacoFisico espaco = new Sala(1, "Sala UFC Quixadá", 50, true);
-            String argumentosJSON = gson.toJson(espaco);
+            String argumentosJSON = "{\"id\":" + espaco.getId()
+                    + ",\"nome\":\"" + espaco.getNome() + "\""
+                    + ",\"capacidade\":" + espaco.getCapacidade()
+                    + ",\"possuiProjetor\":true}";
             
             System.out.println("--- TESTANDO INVOCACAO RMI (4 MÉTODOS) ---\n");
 
