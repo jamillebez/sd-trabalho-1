@@ -72,6 +72,32 @@ public class ReservaRepository {
         }
     }
 
+    public ReservaAgendada buscarPorData(String data) {
+
+        for (ReservaAgendada reserva : listar()) {
+            if (reserva.getData().equals(data)) {
+                return reserva;
+            }
+        }
+
+        return null;
+    }
+
+    public boolean removerPorData(String data) {
+
+        List<ReservaAgendada> reservas = listar();
+
+        boolean removido =
+                reservas.removeIf(
+                        reserva -> reserva.getData().equals(data));
+
+        if (removido) {
+            salvar(reservas);
+        }
+
+        return removido;
+    }
+
     public void salvar(
             List<ReservaAgendada> reservas) {
 

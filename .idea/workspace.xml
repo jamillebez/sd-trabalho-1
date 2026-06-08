@@ -5,28 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e7bfc7a-886b-4969-8895-87b9ea9e85eb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/app/ClienteEspacoFisico.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/app/ServidorEspacoFisico.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/app/TesteEspacoFisicoInputStream.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/app/TesteEspacoFisicoOutputStream.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/eleicao/Cliente.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/eleicao/Servidor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/model/Auditorio.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/model/Campus.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/model/EspacoFisico.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/model/Laboratorio.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/model/ReservaAgendada.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/model/Sala.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/model/Usuario.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/rmi/MensagemRPC.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/rmi/MiddlewareRMI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/rmi/MiddlewareRemoto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/service/ServicoConsultaImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/service/ServicoConsultaRemote.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/service/ServicoReservaImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/service/ServicoReservaRemote.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/stream/EspacoFisicoInputStream.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/stream/EspacoFisicoOutputStream.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/service/ServicoEspaco.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/service/ServicoEspacoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/service/ReservaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/service/ReservaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/service/ServicoReservaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/service/ServicoReservaImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/trabalho2/ClienteEspacoFisico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/trabalho2/ClienteEspacoFisico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/trabalho2/ServidorEspacoFisico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/trabalho2/ServidorEspacoFisico.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +85,7 @@
       <workItem from="1779214807921" duration="609000" />
       <workItem from="1780921253917" duration="816000" />
       <workItem from="1780922134610" duration="149000" />
-      <workItem from="1780922344297" duration="3372000" />
+      <workItem from="1780922344297" duration="4522000" />
     </task>
     <servers />
   </component>

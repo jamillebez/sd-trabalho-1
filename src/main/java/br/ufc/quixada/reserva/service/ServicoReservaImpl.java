@@ -89,16 +89,13 @@ public class ServicoReservaImpl extends UnicastRemoteObject implements ServicoRe
         switch (request.getMethodId()) {
 
             case "1":
-
                 JsonObject json = JsonParser.parseString(request.getArguments()).getAsJsonObject();
 
                 String data = json.get("data").getAsString();
                 Usuario usuario = gson.fromJson(json.get("usuario"), Usuario.class);
 
                 JsonObject espacoJson = json.getAsJsonObject("espaco");
-
                 String tipo = espacoJson.get("tipo").getAsString();
-
                 EspacoFisico espaco = getEspacoFisicoFromJson(espacoJson, tipo);
 
                 ReservaAgendada reserva = new ReservaAgendada(data, usuario, espaco);
@@ -110,10 +107,30 @@ public class ServicoReservaImpl extends UnicastRemoteObject implements ServicoRe
                 break;
 
             case "2":
-
                 List<ReservaAgendada> reservas = repository.listar();
-
                 resultado = gson.toJson(reservas);
+
+                break;
+
+            case "3":
+                ReservaAgendada encontrada =
+                        repository.buscarPorData(
+                                request.getArguments());
+                resultado =
+                        encontrada == null
+                                ? "Reserva não encontrada."
+                                : gson.toJson(encontrada);
+
+                break;
+            case "4":
+                boolean removida =
+                        repository.removerPorData(
+                                request.getArguments());
+
+                resultado =
+                        removida
+                                ? "Reserva removida com sucesso."
+                                : "Reserva não encontrada.";
 
                 break;
 
