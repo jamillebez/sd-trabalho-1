@@ -1,0 +1,30 @@
+[
+  {
+    "data": "11/06/2026",
+    "usuario": {
+      "id": 1,
+      "nome": "Vitor"
+    },
+    "espaco": {
+      "quantidadeComputadores": 20,
+      "id": 1,
+      "nome": "Lab 01",
+      "capacidade": 40,
+      "tipo": "laboratorio"
+    }
+  },
+  {
+    "data": "11/06/2026",
+    "usuario": {
+      "id": 1,
+      "nome": "Vitor"
+    },
+    "espaco": {
+      "quantidadeComputadores": 20,
+      "id": 1,
+      "nome": "Lab 01",
+      "capacidade": 40,
+      "tipo": "laboratorio"
+    }
+  }
+]

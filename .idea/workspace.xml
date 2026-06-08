@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2e7bfc7a-886b-4969-8895-87b9ea9e85eb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/app/ClienteEspacoFisico.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/app/ServidorEspacoFisico.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/app/TesteEspacoFisicoInputStream.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/app/TesteEspacoFisicoOutputStream.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/eleicao/Cliente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/eleicao/Servidor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/model/Auditorio.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/model/Campus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/model/EspacoFisico.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/model/Laboratorio.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/model/ReservaAgendada.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/model/Sala.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/model/Usuario.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/rmi/MensagemRPC.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/rmi/MiddlewareRMI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/rmi/MiddlewareRemoto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/service/ServicoConsultaImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/service/ServicoConsultaRemote.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/service/ServicoReservaImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/service/ServicoReservaRemote.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/stream/EspacoFisicoInputStream.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufc/quixada/reserva/stream/EspacoFisicoOutputStream.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="3DtoRjjW4mJn38hBQFpaJ8m5hJq" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ClienteEspacoFisico.executor": "Run",
+    "Application.ServidorEspacoFisico.executor": "Run",
+    "Application.TesteEspacoFisicoInputStream.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/dev/sd-trabalho-1",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="ServidorEspacoFisico" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="$USER_HOME$/.jdks/ms-21.0.8" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="br.ufc.quixada.reserva.trabalho2.ServidorEspacoFisico" />
+      <module name="reserva" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="br.ufc.quixada.reserva.app.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2e7bfc7a-886b-4969-8895-87b9ea9e85eb" name="Changes" comment="" />
+      <created>1779110721676</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1779110721676</updated>
+      <workItem from="1779110722914" duration="1863000" />
+      <workItem from="1779214807921" duration="609000" />
+      <workItem from="1780921253917" duration="816000" />
+      <workItem from="1780922134610" duration="149000" />
+      <workItem from="1780922344297" duration="3372000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
