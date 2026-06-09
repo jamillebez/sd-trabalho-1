@@ -1,0 +1,13 @@
+{
+  "name": "cliente-javascript-reservas",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cliente CLI em Node.js para consumir a API REST de reservas",
+  "scripts": {
+    "listar-espacos": "node cliente.js listar-espacos",
+    "listar-reservas": "node cliente.js listar-reservas"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

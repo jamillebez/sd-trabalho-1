@@ -1,9 +1,0 @@
-[
-  {
-    "quantidadeComputadores": 30,
-    "id": 1,
-    "nome": "Laboratório de Informática",
-    "capacidade": 30,
-    "tipo": "laboratorio"
-  }
-]
