@@ -2,7 +2,7 @@ package br.ufc.quixada.reserva.model;
 
 import java.io.Serializable;
 
-public abstract class EspacoFisico implements Serializable {
+public class EspacoFisico implements Serializable {
     protected int id;
     protected String nome;
     protected int capacidade;
@@ -26,4 +26,6 @@ public abstract class EspacoFisico implements Serializable {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    public void setId(int id) { this.id = id; }
 }

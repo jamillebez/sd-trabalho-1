@@ -3,10 +3,10 @@ package br.ufc.quixada.reserva.trabalho2;
 import java.rmi.Naming;
 import java.rmi.registry.LocateRegistry;
 
-import br.ufc.quixada.reserva.service.ServicoReservaImpl;
-import br.ufc.quixada.reserva.service.ServicoReserva;
-import br.ufc.quixada.reserva.service.ServicoEspaco;
-import br.ufc.quixada.reserva.service.ServicoEspacoImpl;
+import br.ufc.quixada.reserva.serviceTrabalho2.ServicoReservaImpl;
+import br.ufc.quixada.reserva.serviceTrabalho2.ServicoReserva;
+import br.ufc.quixada.reserva.serviceTrabalho2.ServicoEspaco;
+import br.ufc.quixada.reserva.serviceTrabalho2.ServicoEspacoImpl;
 
 public class ServidorEspacoFisico {
     public static void main(String[] args) {

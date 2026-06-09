@@ -5,17 +5,74 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e7bfc7a-886b-4969-8895-87b9ea9e85eb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/service/ServicoEspaco.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/service/ServicoEspacoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/service/ReservaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/service/ReservaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/service/ServicoReservaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/service/ServicoReservaImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reserva.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/ReservaApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/controller/EspacoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/controller/ReservaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/controller/UsuarioController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/dto/EspacoResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/dto/EspacoUpsertDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/dto/ReservaResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/dto/ReservaUpsertDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/repository/EspacoFisicoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/repository/ReservaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/repository/UsuarioRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/service/EspacoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/service/ReservaService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/service/UsuarioService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/model/EspacoFisico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/model/EspacoFisico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/model/ReservaAgendada.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/model/ReservaAgendada.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/service/ReservaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/serviceTrabalho2/ReservaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/service/ServicoEspaco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/serviceTrabalho2/ServicoEspaco.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/service/ServicoEspacoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/serviceTrabalho2/ServicoEspacoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/service/ServicoReserva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/serviceTrabalho2/ServicoReserva.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/service/ServicoReservaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/serviceTrabalho2/ServicoReservaImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/trabalho2/ClienteEspacoFisico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/trabalho2/ClienteEspacoFisico.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/trabalho2/ServidorEspacoFisico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/ufc/quixada/reserva/trabalho2/ServidorEspacoFisico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/app/TesteEspacoFisicoInputStream$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/app/TesteEspacoFisicoInputStream$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/app/TesteEspacoFisicoInputStream$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/app/TesteEspacoFisicoInputStream$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/app/TesteEspacoFisicoInputStream$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/app/TesteEspacoFisicoInputStream$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/app/TesteEspacoFisicoInputStream.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/app/TesteEspacoFisicoInputStream.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/app/TesteEspacoFisicoOutputStream.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/app/TesteEspacoFisicoOutputStream.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/eleicao/Cliente.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/eleicao/Cliente.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/eleicao/Servidor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/eleicao/Servidor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/model/Auditorio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/model/Auditorio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/model/Campus.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/model/Campus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/model/EspacoFisico.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/model/EspacoFisico.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/model/Laboratorio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/model/Laboratorio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/model/ReservaAgendada.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/model/ReservaAgendada.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/model/Sala.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/model/Sala.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/model/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/model/Usuario.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/rmi/Mensagem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/rmi/Mensagem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/rmi/RemoteObjectRef.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/rmi/RemoteObjectRef.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/service/ReservaRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/service/ServicoEspaco.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/service/ServicoEspacoImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/service/ServicoReserva.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/service/ServicoReservaImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/stream/EspacoFisicoInputStream$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/stream/EspacoFisicoInputStream$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/stream/EspacoFisicoInputStream.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/stream/EspacoFisicoInputStream.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/stream/EspacoFisicoOutputStream.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/stream/EspacoFisicoOutputStream.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/trabalho2/ClienteEspacoFisico.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/trabalho2/ClienteEspacoFisico.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/trabalho2/ServidorEspacoFisico.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/ufc/quixada/reserva/trabalho2/ServidorEspacoFisico.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Class" />
+        <option value="Class" />
+        <option value="Record" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -33,9 +90,16 @@
     "Application.ClienteEspacoFisico.executor": "Run",
     "Application.ServidorEspacoFisico.executor": "Run",
     "Application.TesteEspacoFisicoInputStream.executor": "Run",
+    "Application.reserva.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.ReservaApplication.executor": "Run",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/dev/sd-trabalho-1",
     "node.js.detected.package.eslint": "true",
@@ -43,24 +107,16 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager">
-    <configuration name="ServidorEspacoFisico" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="$USER_HOME$/.jdks/ms-21.0.8" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="br.ufc.quixada.reserva.trabalho2.ServidorEspacoFisico" />
+    <configuration name="reserva" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="br.ufc.quixada.reserva.ReservaApplication" />
       <module name="reserva" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="br.ufc.quixada.reserva.app.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -85,7 +141,9 @@
       <workItem from="1779214807921" duration="609000" />
       <workItem from="1780921253917" duration="816000" />
       <workItem from="1780922134610" duration="149000" />
-      <workItem from="1780922344297" duration="4522000" />
+      <workItem from="1780922344297" duration="7781000" />
+      <workItem from="1780933705890" duration="7449000" />
+      <workItem from="1780963734685" duration="4649000" />
     </task>
     <servers />
   </component>

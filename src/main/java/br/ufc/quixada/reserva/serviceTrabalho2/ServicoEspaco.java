@@ -1,4 +1,4 @@
-package br.ufc.quixada.reserva.service;
+package br.ufc.quixada.reserva.serviceTrabalho2;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

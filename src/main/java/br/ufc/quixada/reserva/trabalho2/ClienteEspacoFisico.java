@@ -5,8 +5,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 import br.ufc.quixada.reserva.rmi.RemoteObjectRef;
-import br.ufc.quixada.reserva.service.ServicoEspaco;
-import br.ufc.quixada.reserva.service.ServicoReserva;
+import br.ufc.quixada.reserva.serviceTrabalho2.ServicoEspaco;
+import br.ufc.quixada.reserva.serviceTrabalho2.ServicoReserva;
 import com.google.gson.Gson;
 
 import br.ufc.quixada.reserva.model.*;
@@ -75,7 +75,8 @@ public class ClienteEspacoFisico {
                             new ReservaAgendada(
                                     data,
                                     usuario,
-                                    espaco);
+                                    espaco,
+                                    null);
 
                     byte[] respostaCadastro =
                             servico.doOperation(

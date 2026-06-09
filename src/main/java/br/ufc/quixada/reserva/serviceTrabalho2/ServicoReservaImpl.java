@@ -1,4 +1,4 @@
-package br.ufc.quixada.reserva.service;
+package br.ufc.quixada.reserva.serviceTrabalho2;
 
 import br.ufc.quixada.reserva.model.*;
 
@@ -98,7 +98,7 @@ public class ServicoReservaImpl extends UnicastRemoteObject implements ServicoRe
                 String tipo = espacoJson.get("tipo").getAsString();
                 EspacoFisico espaco = getEspacoFisicoFromJson(espacoJson, tipo);
 
-                ReservaAgendada reserva = new ReservaAgendada(data, usuario, espaco);
+                ReservaAgendada reserva = new ReservaAgendada(data, usuario, espaco, null);
 
                 repository.adicionar(reserva);
 

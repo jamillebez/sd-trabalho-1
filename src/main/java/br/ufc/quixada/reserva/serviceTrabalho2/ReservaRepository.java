@@ -1,4 +1,4 @@
-package br.ufc.quixada.reserva.service;
+package br.ufc.quixada.reserva.serviceTrabalho2;
 
 import br.ufc.quixada.reserva.model.*;
 
@@ -59,7 +59,7 @@ public class ReservaRepository {
                         throw new RuntimeException("Tipo desconhecido: " + tipo);
                 }
 
-                reservas.add(new ReservaAgendada(data, usuario, espaco));
+                reservas.add(new ReservaAgendada(data, usuario, espaco, null));
             }
 
             return reservas;

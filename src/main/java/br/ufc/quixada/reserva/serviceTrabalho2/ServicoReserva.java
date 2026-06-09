@@ -1,4 +1,4 @@
-package br.ufc.quixada.reserva.service;
+package br.ufc.quixada.reserva.serviceTrabalho2;
 
 import br.ufc.quixada.reserva.rmi.RemoteObjectRef;
 
