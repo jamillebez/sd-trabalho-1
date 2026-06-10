@@ -46,6 +46,22 @@ def criar_reserva(data: str, usuario_id: int, espaco_id: int) -> None:
     print("Reserva criada com sucesso.")
 
 
+def listar_usuarios() -> None:
+    response = requests.get(f"{BASE_URL}/usuarios", timeout=10)
+    response.raise_for_status()
+    print_json(response.json())
+
+
+def criar_usuario(usuario_id: int, nome: str) -> None:
+    payload = {
+        "id": usuario_id,
+        "nome": nome,
+    }
+    response = requests.post(f"{BASE_URL}/usuarios", json=payload, timeout=10)
+    response.raise_for_status()
+    print("Usuário criado com sucesso.")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Cliente Python para a API de reservas")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -64,6 +80,12 @@ def main() -> None:
     criar_reserva_parser.add_argument("--usuario-id", type=int, required=True)
     criar_reserva_parser.add_argument("--espaco-id", type=int, required=True)
 
+    subparsers.add_parser("listar-usuarios", help="Lista os usuários")
+
+    criar_usuario_parser = subparsers.add_parser("criar-usuario", help="Cria um usuário")
+    criar_usuario_parser.add_argument("--id", type=int, required=True)
+    criar_usuario_parser.add_argument("--nome", required=True)
+
     args = parser.parse_args()
 
     if args.command == "listar-espacos":
@@ -74,6 +96,11 @@ def main() -> None:
         listar_reservas()
     elif args.command == "criar-reserva":
         criar_reserva(args.data, args.usuario_id, args.espaco_id)
+    # --- NOVOS COMANDOS EXECUTADOS ---
+    elif args.command == "listar-usuarios":
+        listar_usuarios()
+    elif args.command == "criar-usuario":
+        criar_usuario(args.id, args.nome)
 
 
 if __name__ == "__main__":

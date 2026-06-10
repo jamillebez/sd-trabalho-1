@@ -43,7 +43,7 @@ public class ReservaRepository {
             writer.close();
 
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException("Erro ao salvar reservas no ficheiro JSON", e);
         }
     }
 

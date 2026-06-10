@@ -52,12 +52,27 @@ async function criarReserva(data, usuarioId, espacoId) {
   console.log("Reserva criada com sucesso.");
 }
 
+async function listarUsuarios() {
+  const usuarios = await request("/usuarios");
+  printJson(usuarios);
+}
+
+async function criarUsuario(id, nome) {
+  await request("/usuarios", {
+    method: "POST",
+    body: JSON.stringify({ id: Number(id), nome }),
+  });
+  console.log("Usuário criado com sucesso.");
+}
+
 function usage() {
   console.log(`Uso:
   node cliente.js listar-espacos
   node cliente.js criar-espaco --nome "Sala 01" --tipo Sala --capacidade 40
   node cliente.js listar-reservas
   node cliente.js criar-reserva --data "2026-06-09T10:00" --usuario-id 1 --espaco-id 1
+  node cliente.js listar-usuarios
+  node cliente.js criar-usuario --id 1 --nome "Jamille"
 
 Variável opcional:
   API_BASE_URL=http://localhost:8080`);
@@ -111,6 +126,25 @@ async function main() {
     }
 
     await criarReserva(data, usuarioId, espacoId);
+    return;
+  }
+
+  if (command === "listar-usuarios") {
+    await listarUsuarios();
+    return;
+  }
+
+  if (command === "criar-usuario") {
+    const id = getOption(args, "--id");
+    const nome = getOption(args, "--nome");
+
+    if (!id || !nome) {
+      usage();
+      process.exitCode = 1;
+      return;
+    }
+
+    await criarUsuario(id, nome);
     return;
   }
 
