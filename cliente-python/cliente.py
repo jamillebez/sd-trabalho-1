@@ -96,7 +96,6 @@ def main() -> None:
         listar_reservas()
     elif args.command == "criar-reserva":
         criar_reserva(args.data, args.usuario_id, args.espaco_id)
-    # --- NOVOS COMANDOS EXECUTADOS ---
     elif args.command == "listar-usuarios":
         listar_usuarios()
     elif args.command == "criar-usuario":
