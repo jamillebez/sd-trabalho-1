@@ -21,11 +21,18 @@ public class ReservaListener {
     public void consumir(ReservaUpsertDTO reserva, Channel channel, Message message) throws IOException {
         long deliveryTag = message.getMessageProperties().getDeliveryTag();
 
+        System.out.println(">>> [RabbitMQ Assíncrono] Mensagem retirada da fila! Processando o pedido de reserva...");
+
         try {
             reservaService.criar(reserva);
+            
+            System.out.println(">>> [RabbitMQ Assíncrono] Sucesso! Reserva gravada no ficheiro JSON. A enviar confirmação para limpar a fila.");
             channel.basicAck(deliveryTag, false);
+            
         } catch (Exception e) {
-            channel.basicNack(deliveryTag, false, true);
+            System.out.println(">>> [RabbitMQ Assíncrono] Falha no processamento: " + e.getMessage());
+            
+            channel.basicNack(deliveryTag, false, false);
         }
     }
 }

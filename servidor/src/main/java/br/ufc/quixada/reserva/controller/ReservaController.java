@@ -25,12 +25,16 @@ public class ReservaController {
 
     @PostMapping
     public ResponseEntity<Map<String, String>> criar(@RequestBody ReservaUpsertDTO reserva) {
+        System.out.println(">>> [HTTP -> RabbitMQ] Recebido pedido de reserva. Publicando mensagem na fila...");
+        
         rabbitTemplate.convertAndSend(
                 RabbitMQConfig.RESERVAS_EXCHANGE,
                 RabbitMQConfig.RESERVAS_ROUTING_KEY,
                 reserva
         );
 
+        System.out.println(">>> [HTTP -> RabbitMQ] Mensagem enviada! Retornando HTTP 202 Accepted e liberando o cliente.");
+        
         return ResponseEntity
                 .status(HttpStatus.ACCEPTED)
                 .body(Map.of("mensagem", "Reserva recebida e enviada para a fila."));
@@ -38,16 +42,19 @@ public class ReservaController {
 
     @GetMapping
     public List<ReservaResponseDTO> listar() {
+        System.out.println(">>> [HTTP Síncrono] Lista todas as reservas.");
         return reservaService.listar();
     }
 
     @GetMapping("/{data}")
     public ReservaResponseDTO buscar(@PathVariable String data) {
+        System.out.println(">>> [HTTP Síncrono] Busca reserva da data: " + data);
         return reservaService.buscar(data);
     }
 
     @DeleteMapping("/{data}")
     public void remover(@PathVariable String data) {
+        System.out.println(">>> [HTTP Síncrono] Remove reserva da data: " + data);
         reservaService.remover(data);
     }
 }
